@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple Hide and Show Vue Package.",
   "main": "index.js",
+  "types": "index.d.ts",
   "author": "trapcodeio",
   "license": "MIT",
   "private": false,
