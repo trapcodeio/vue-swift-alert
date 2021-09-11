@@ -2,5 +2,8 @@ node_modules
 .idea
 .vscode
 
+test.ts
+
+*.js.map
 *.d.ts
 *.js

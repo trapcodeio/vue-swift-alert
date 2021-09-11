@@ -3,13 +3,13 @@ import {reactive, Ref, ref} from "vue";
 /**
  * Concept: Basically an alert
  */
-const alerts: Record<string, SwiftAlert> = {};
+const alerts: Record<string, SwiftAlert<any>> = {};
 
 /**
  * A Class that represents a basic alert.
  * Extend for more functionalities.
  */
-export class SwiftAlert {
+export class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> {
     // Id of this alert
     id: string;
 
@@ -17,7 +17,7 @@ export class SwiftAlert {
     isVisible: Ref<boolean>;
 
     // Serves as a store for data related to this alert.
-    meta: Record<string, any>;
+    meta: Meta & {message: string | undefined};
 
     /**
      * Provide id for alert.
@@ -33,7 +33,7 @@ export class SwiftAlert {
         // Set Reactive Meta.
         this.meta = reactive({
             message: undefined
-        });
+        }) as (Meta & {message: string | undefined});
     }
 
     /**
@@ -68,19 +68,29 @@ export class SwiftAlert {
     destroy(id: string) {
         delete alerts[id];
     }
+
+
+    /**
+     * Get/Set Message.
+     * @param message
+     */
+    message(message?: string){
+        if(message) this.meta.message = message;
+        return this.meta.message;
+    }
 }
 
 
 /**
  * Create new Swift Alert or return existing alert for ID provided..
  */
-export function swiftAlert(id: string = "default") {
+export function swiftAlert<Meta extends Record<string, any>>(id: string = "default") {
     // Return alert if exists already.
-    if (alerts[id]) return alerts[id];
+    if (alerts[id]) return alerts[id] as SwiftAlert<Meta>;
 
     // Initialize new alert and save to alerts memory variable.
-    alerts[id] = new SwiftAlert(id);
+    alerts[id] = new SwiftAlert<Meta>(id);
 
     // Return SwiftAlert Instance.
-    return alerts[id];
+    return alerts[id] as SwiftAlert<Meta>;
 }
