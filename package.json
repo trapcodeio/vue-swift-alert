@@ -1,0 +1,13 @@
+{
+  "name": "vue-swift-alert",
+  "version": "1.0.0",
+  "description": "Simple Hide and Show Vue Package.",
+  "main": "index.js",
+  "author": "trapcodeio",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "typescript": "^4.4.3",
+    "vue": "^3.2.11"
+  }
+}
