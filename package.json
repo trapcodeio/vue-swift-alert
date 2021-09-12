@@ -1,6 +1,6 @@
 {
   "name": "vue-swift-alert",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Simple Hide and Show Vue Package.",
   "main": "index.js",
   "types": "index.d.ts",
