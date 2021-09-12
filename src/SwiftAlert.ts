@@ -48,8 +48,6 @@ export default class SwiftAlert<Meta extends Record<string, any> = Record<string
      * @param hideAfter
      */
     show(hideAfter?: number) {
-        console.log(`Show: ${this.id}`)
-
         this.isVisible.value = true;
         if (hideAfter) setTimeout(() => this.hide(), hideAfter);
         return this;
