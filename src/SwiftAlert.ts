@@ -1,15 +1,12 @@
 import {reactive, Ref, ref} from "vue";
 
-/**
- * Concept: Basically an alert
- */
-const alerts: Record<string, SwiftAlert<any>> = {};
+
 
 /**
  * A Class that represents a basic alert.
  * Extend for more functionalities.
  */
-export class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> {
+export default class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> {
     // Id of this alert
     id: string;
 
@@ -66,13 +63,6 @@ export class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> 
         return this;
     }
 
-    /**
-     * Destroy, removes alerts from memory.
-     */
-    destroy(id: string) {
-        delete alerts[id];
-    }
-
 
     /**
      * Get/Set Message.
@@ -84,17 +74,3 @@ export class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> 
     }
 }
 
-
-/**
- * Create new Swift Alert or return existing alert for ID provided..
- */
-export function swiftAlert<Meta extends Record<string, any>>(id: string = "default") {
-    // Return alert if exists already.
-    if (alerts[id]) return alerts[id] as SwiftAlert<Meta>;
-
-    // Initialize new alert and save to alerts memory variable.
-    alerts[id] = new SwiftAlert<Meta>(id);
-
-    // Return SwiftAlert Instance.
-    return alerts[id] as SwiftAlert<Meta>;
-}

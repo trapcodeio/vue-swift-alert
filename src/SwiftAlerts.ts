@@ -1,9 +1,10 @@
-import {swiftAlert, SwiftAlert} from "./SwiftAlert";
+import SwiftAlert from "./SwiftAlert";
+import {swiftAlert} from "../index";
 
 /**
  * Plural version of SwiftAlert for handling multiple Alerts.
  */
-export class SwiftAlerts<IDS extends string[] = string[]> {
+export default class SwiftAlerts<IDS extends string[] = string[]> {
     ids: string[];
 
     constructor(ids: IDS) {
@@ -55,12 +56,4 @@ export class SwiftAlerts<IDS extends string[] = string[]> {
         this.ids.forEach((id) => data.push(swiftAlert(id)));
         return data;
     }
-}
-
-
-/**
- * Plural version of swiftAlert() for handling multiple Alerts.
- */
-export function swiftAlerts<IDS extends string[]>(...ids: IDS) {
-    return new SwiftAlerts<IDS>(ids);
 }
