@@ -34,6 +34,8 @@ export class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> 
         this.meta = reactive({
             message: undefined
         }) as (Meta & {message: string | undefined});
+
+
     }
 
     /**
@@ -49,6 +51,8 @@ export class SwiftAlert<Meta extends Record<string, any> = Record<string, any>> 
      * @param hideAfter
      */
     show(hideAfter?: number) {
+        console.log(`Show: ${this.id}`)
+
         this.isVisible.value = true;
         if (hideAfter) setTimeout(() => this.hide(), hideAfter);
         return this;

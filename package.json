@@ -5,6 +5,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "author": "trapcodeio",
+  "scripts": {
+    "watch": "npx tsc --watch"
+  },
   "license": "MIT",
   "private": false,
   "devDependencies": {
