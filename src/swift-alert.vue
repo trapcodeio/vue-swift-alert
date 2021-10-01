@@ -10,16 +10,17 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from "vue";
-import type SwiftAlert from "../src/SwiftAlert";
+import {defineComponent} from "vue";
+import {swiftAlert} from "../index";
 
 export default defineComponent({
   props: {
-    h: {type: Object, required: true} as PropType<SwiftAlert>,
+    id: {type: String, required: true},
     div: {type: Boolean, default: false}
   },
 
-  setup({h}: { id: string }) {
+  setup({id}: { id: string }) {
+    const h = swiftAlert(id);
     return {isVisible: h.isVisible};
   }
 });

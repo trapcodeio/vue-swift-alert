@@ -1,7 +1,5 @@
 import {reactive, Ref, ref} from "vue";
 
-
-
 /**
  * A Class that represents a basic alert.
  * Extend for more functionalities.
@@ -14,7 +12,7 @@ export default class SwiftAlert<Meta extends Record<string, any> = Record<string
     isVisible: Ref<boolean>;
 
     // Serves as a store for data related to this alert.
-    meta: Meta & {message: string | undefined};
+    meta: Meta & { message: string | undefined };
 
     /**
      * Provide id for alert.
@@ -30,9 +28,7 @@ export default class SwiftAlert<Meta extends Record<string, any> = Record<string
         // Set Reactive Meta.
         this.meta = reactive({
             message: undefined
-        }) as (Meta & {message: string | undefined});
-
-
+        }) as (Meta & { message: string | undefined });
     }
 
     /**
@@ -66,8 +62,8 @@ export default class SwiftAlert<Meta extends Record<string, any> = Record<string
      * Get/Set Message.
      * @param message
      */
-    message(message?: string){
-        if(message) this.meta.message = message;
+    message(message?: string) {
+        if (message) this.meta.message = message;
         return this.meta.message;
     }
 }
