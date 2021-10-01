@@ -45,3 +45,7 @@ export function forgetSwiftAlert(id: string) {
     delete window.SWIFT_ALERTS[id]
     return true;
 }
+
+export function definedSwiftAlerts() {
+    return window.SWIFT_ALERTS
+}
