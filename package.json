@@ -1,6 +1,6 @@
 {
   "name": "vue-swift-alert",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple Hide and Show Vue Package.",
   "main": "dist/swift-alert.umd.js",
   "module": "dist/swift-alert.esm.js",
