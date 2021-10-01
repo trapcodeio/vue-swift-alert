@@ -2,7 +2,8 @@ import SwiftAlert from "./src/SwiftAlert";
 import SwiftAlerts from "./src/SwiftAlerts";
 
 // Const that holds all alerts
-export const SWIFT_ALERTS: Record<string, SwiftAlert> = {}
+// @ts-ignore
+export const SWIFT_ALERTS: Record<string, SwiftAlert> = window.SWIFT_ALERTS = {}
 
 /**
  * Create new Swift Alert or return existing alert for ID provided..
