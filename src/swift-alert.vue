@@ -9,7 +9,7 @@
   </template>
 </template>
 
-<script lang="ts">
+<script>
 import {defineComponent} from "vue";
 import {swiftAlert} from "../index";
 
@@ -19,7 +19,7 @@ export default defineComponent({
     div: {type: Boolean, default: false}
   },
 
-  setup({id}: { id: string }) {
+  setup({id}) {
     const h = swiftAlert(id);
     return {isVisible: h.isVisible};
   }
