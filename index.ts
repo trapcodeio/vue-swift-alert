@@ -1,25 +1,32 @@
 import SwiftAlert from "./src/SwiftAlert";
 import SwiftAlerts from "./src/SwiftAlerts";
 
-// Const that holds all alerts
-// @ts-ignore
-export const SWIFT_ALERTS: Record<string, SwiftAlert> = window.SWIFT_ALERTS = {}
+declare global {
+    interface Window {
+        // add you custom properties and methods
+        SWIFT_ALERTS: Record<string, SwiftAlert<any>>
+    }
+}
+
+/**
+ * Concept: Basically an alert
+ */
+window.SWIFT_ALERTS = {};
 
 /**
  * Create new Swift Alert or return existing alert for ID provided..
  */
 export function swiftAlert<Meta extends Record<string, any>>(id: string = "default") {
-    if (SWIFT_ALERTS.hasOwnProperty(id)) return SWIFT_ALERTS[id];
+    // Return alert if exists already.
+    if (window.SWIFT_ALERTS[id]) return window.SWIFT_ALERTS[id] as SwiftAlert<Meta>;
+
+    // Initialize new alert and save to alerts memory variable.
+    window.SWIFT_ALERTS[id] = new SwiftAlert<Meta>(id);
 
     // Return SwiftAlert Instance.
-    const alert = new SwiftAlert<Meta>(id);
-
-    // Store.
-    SWIFT_ALERTS[id] = alert;
-
-    // Record alert
-    return alert;
+    return window.SWIFT_ALERTS[id] as SwiftAlert<Meta>;
 }
+
 
 
 /**
@@ -35,7 +42,6 @@ export function swiftAlerts<IDS extends string[]>(...ids: IDS) {
  * @param id
  */
 export function forgetSwiftAlert(id: string) {
-    delete SWIFT_ALERTS[id]
-
+    delete window.SWIFT_ALERTS[id]
     return true;
 }
