@@ -1,4 +1,4 @@
-import { reactive } from "vue";
+import { reactive, Ref, ref, unref } from "vue";
 
 /**
  * A Class that represents a basic alert.
@@ -11,7 +11,7 @@ export default class SwiftAlert<
   id: string;
 
   // Visibility
-  isVisible: boolean;
+  isVisible: Ref<boolean>;
 
   // Serves as a store for data related to this alert.
   meta: Meta & { message: string | undefined };
@@ -25,19 +25,19 @@ export default class SwiftAlert<
     this.id = id;
 
     // SetVisibility to ref.
-    this.isVisible = false;
+    this.isVisible = ref(false);
 
     // Set Reactive Meta.
-    this.meta = {
+    this.meta = reactive({
       message: undefined,
-    } as Meta & { message: string | undefined };
+    }) as Meta & { message: string | undefined };
   }
 
   /**
    * Hide.
    */
   hide() {
-    this.isVisible = false;
+    this.isVisible.value = false;
     return this;
   }
 
@@ -46,7 +46,7 @@ export default class SwiftAlert<
    * @param hideAfter
    */
   show(hideAfter?: number) {
-    this.isVisible = true;
+    this.isVisible.value = true;
     if (hideAfter) setTimeout(() => this.hide(), hideAfter);
     return this;
   }
@@ -55,7 +55,7 @@ export default class SwiftAlert<
    * Toggle Model
    */
   toggle() {
-    this.isVisible = !this.isVisible;
+    this.isVisible.value = !this.isVisible.value;
     return this;
   }
 
