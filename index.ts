@@ -1,4 +1,4 @@
-import { inject } from "vue";
+import { inject, reactive } from "vue";
 import SwiftAlert from "./src/SwiftAlert";
 import SwiftAlerts from "./src/SwiftAlerts";
 
@@ -31,7 +31,7 @@ export function swiftAlert<Meta extends Record<string, any>>(
   if (SWIFT_ALERTS[id]) return SWIFT_ALERTS[id] as SwiftAlert<Meta>;
 
   // Initialize new alert and save to alerts memory variable.
-  SWIFT_ALERTS[id] = new SwiftAlert<Meta>(id);
+  SWIFT_ALERTS[id] = reactive(new SwiftAlert<Meta>(id));
 
   // Return SwiftAlert Instance.
   return SWIFT_ALERTS[id] as SwiftAlert<Meta>;
