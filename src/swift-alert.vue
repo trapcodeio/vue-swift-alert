@@ -9,19 +9,19 @@
   </template>
 </template>
 
-<script>
-import {defineComponent} from "vue";
-import {swiftAlert} from "../index";
+<script lang="ts">
+  import { defineComponent } from "vue";
+  import { swiftAlert } from "../index";
 
-export default defineComponent({
-  props: {
-    id: {type: String, required: true},
-    div: {type: Boolean, default: false}
-  },
+  export default defineComponent({
+    props: {
+      id: { type: String, required: true },
+      div: { type: Boolean, default: false },
+    },
 
-  setup({id}) {
-    const h = swiftAlert(id);
-    return {isVisible: h.isVisible};
-  }
-});
+    setup({ id }) {
+      const h = swiftAlert(id);
+      return { isVisible: h.isVisible };
+    },
+  });
 </script>

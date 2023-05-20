@@ -1,51 +1,54 @@
+import { inject } from "vue";
 import SwiftAlert from "./src/SwiftAlert";
 import SwiftAlerts from "./src/SwiftAlerts";
 
-declare global {
-    interface Window {
-        // add you custom properties and methods
-        SWIFT_ALERTS: Record<string, SwiftAlert<any>>
-    }
-}
+export type SWIFT_ALERTS = Record<string, SwiftAlert<any>>;
 
-/**
- * Concept: Basically an alert
- */
-window.SWIFT_ALERTS = {};
+export function injectSwiftAlerts(): SWIFT_ALERTS {
+  const SWIFT_ALERTS = inject<SWIFT_ALERTS | undefined>(
+    "SWIFT_ALERTS",
+    undefined
+  );
+
+  if (!SWIFT_ALERTS) {
+    throw new Error(
+      "SwiftAlerts not found. Did you forget to install the plugin?"
+    );
+  }
+
+  return SWIFT_ALERTS;
+}
 
 /**
  * Create new Swift Alert or return existing alert for ID provided..
  */
-export function swiftAlert<Meta extends Record<string, any>>(id: string = "default") {
-    // Return alert if exists already.
-    if (window.SWIFT_ALERTS[id]) return window.SWIFT_ALERTS[id] as SwiftAlert<Meta>;
+export function swiftAlert<Meta extends Record<string, any>>(
+  id: string = "default"
+) {
+  const SWIFT_ALERTS = injectSwiftAlerts();
 
-    // Initialize new alert and save to alerts memory variable.
-    window.SWIFT_ALERTS[id] = new SwiftAlert<Meta>(id);
+  // Return alert if exists already.
+  if (SWIFT_ALERTS[id]) return SWIFT_ALERTS[id] as SwiftAlert<Meta>;
 
-    // Return SwiftAlert Instance.
-    return window.SWIFT_ALERTS[id] as SwiftAlert<Meta>;
+  // Initialize new alert and save to alerts memory variable.
+  SWIFT_ALERTS[id] = new SwiftAlert<Meta>(id);
+
+  // Return SwiftAlert Instance.
+  return SWIFT_ALERTS[id] as SwiftAlert<Meta>;
 }
-
-
 
 /**
  * Plural version of swiftAlert() for handling multiple Alerts.
  */
 export function swiftAlerts<IDS extends string[]>(...ids: IDS) {
-    return new SwiftAlerts<IDS>(ids);
+  return new SwiftAlerts<IDS>(ids);
 }
-
 
 /**
  * forget Swift Alert
  * @param id
  */
 export function forgetSwiftAlert(id: string) {
-    delete window.SWIFT_ALERTS[id]
-    return true;
-}
-
-export function definedSwiftAlerts() {
-    return window.SWIFT_ALERTS
+  delete injectSwiftAlerts()[id];
+  return true;
 }
