@@ -9,8 +9,7 @@
   "author": "trapcodeio",
   "repository": "https://github.com/trapcodeio/vue-swift-alert",
   "scripts": {
-    "watch": "npx tsc --watch",
-    "prepublishOnly": "npx tsc"
+    "watch": "npx tsc --watch"
   },
   "license": "MIT",
   "private": false,

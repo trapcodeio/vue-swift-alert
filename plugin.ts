@@ -1,6 +1,7 @@
 import { Plugin, reactive } from "vue";
-import SwiftAlertComponent from "./src/swift-alert.vue";
 import SwiftAlert from "./src/SwiftAlert";
+// @ts-ignore
+import SwiftAlertComponent from "./src/swift-alert.vue";
 
 // Export plugin
 export default <Plugin>{
