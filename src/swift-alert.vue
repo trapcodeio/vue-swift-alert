@@ -15,11 +15,11 @@ import type SwiftAlert from "../src/SwiftAlert";
 
 export default defineComponent({
   props: {
-    h: {type: Object, required: true} as PropType<SwiftAlert>,
+    h: {type: Object as PropType<SwiftAlert>, required: true},
     div: {type: Boolean, default: false}
   },
 
-  setup({h}: { id: string }) {
+  setup({h}) {
     return {isVisible: h.isVisible};
   }
 });

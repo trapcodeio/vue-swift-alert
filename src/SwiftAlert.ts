@@ -31,8 +31,6 @@ export default class SwiftAlert<Meta extends Record<string, any> = Record<string
         this.meta = reactive({
             message: undefined
         }) as (Meta & {message: string | undefined});
-
-
     }
 
     /**

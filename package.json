@@ -13,8 +13,8 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "typescript": "^4.4.3",
-    "vue": "^3.2.11"
+    "typescript": "^5.0.4",
+    "vue": "^3.3.4"
   },
   "dependencies": {}
 }

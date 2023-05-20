@@ -20,7 +20,7 @@ export default class SwiftAlerts<IDS extends string[] = string[]> {
 
     hide(id: IDS[number]) {
         this.get(id).hide();
-        return this;
+        return this ;
     }
 
     toggle(id: IDS[number]) {
