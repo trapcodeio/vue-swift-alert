@@ -14,8 +14,8 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "typescript": "^4.5.4",
-    "vue": "^3.2.11"
+    "typescript": "^5.5.4",
+    "vue": "^3.4.37"
   },
   "engines": {
     "node": ">=14"
