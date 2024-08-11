@@ -1,27 +1,17 @@
 <template>
-  <template v-if="isVisible">
-    <div v-if="div">
-      <slot></slot>
-    </div>
-    <template v-else>
-      <slot></slot>
-    </template>
-  </template>
+  <div v-if="h.isVisible && div">
+    <slot></slot>
+  </div>
+  <slot v-else-if="h.isVisible"></slot>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from "vue";
-  import { swiftAlert } from "../index";
+<script lang="ts" setup>
+import {swiftAlert} from "../index";
 
-  export default defineComponent({
-    props: {
-      id: { type: String, required: true },
-      div: { type: Boolean, default: false },
-    },
+const props = defineProps({
+  id: {type: String, required: true},
+  div: {type: Boolean, default: false},
+})
 
-    setup({ id }) {
-      const h = swiftAlert(id);
-      return { isVisible: h.isVisible };
-    },
-  });
+const h = swiftAlert(props.id);
 </script>
