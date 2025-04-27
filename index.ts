@@ -1,4 +1,4 @@
-import {inject, reactive, Ref} from "vue";
+import {inject, reactive, type Ref} from "vue";
 import SwiftAlert from "./src/SwiftAlert";
 import SwiftAlerts from "./src/SwiftAlerts";
 
