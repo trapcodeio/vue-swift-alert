@@ -25,7 +25,7 @@ export default class SwiftAlerts<IDS extends string[] = string[]> {
     /**
      * Shows the alert corresponding to the given ID.
      *
-     * @param {IDS[number]} id - The identifier of the alert to be shown.
+     * @param {string} id - The identifier of the alert to be shown.
      * @param {number} [hideAfter] - Optional duration in milliseconds after which the alert should be hidden.
      * @return {this} The current instance for method chaining.
      */
@@ -106,7 +106,7 @@ export default class SwiftAlerts<IDS extends string[] = string[]> {
     /**
      * Converts the current instance data into an object mapping IDs to SwiftAlert instances.
      *
-     * @return {Record<IDS[number], SwiftAlert>} An object where keys are IDs from the current instance and values are corresponding SwiftAlert instances.
+     * @return {Record<string, SwiftAlert>} An object where keys are IDs from the current instance and values are corresponding SwiftAlert instances.
      */
     toObject() {
         let data: Record<string, SwiftAlert> = {};
