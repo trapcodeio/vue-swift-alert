@@ -64,4 +64,12 @@ export default class SwiftAlert<
         if (message) this.meta.message = message;
         return this.meta.message;
     }
+
+    /**
+     * Set Message (enables chaining).
+     */
+    setMessage(message: string) {
+        this.meta.message = message;
+        return this;
+    }
 }
